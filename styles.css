@@ -1,0 +1,143 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body,
+html {
+    height: 100%;
+    background-color: aliceblue;
+}
+
+.main {
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid: 1fr 5fr / 1fr;
+}
+
+.new-book-button {
+    min-width: fit-content;
+    padding: 1rem 2rem;
+    place-self: center;
+    font-size: max(3vw, 3vh);
+    border-radius: 25px;
+    background-color: rgb(100, 200, 125);
+    color: beige;
+    border: none;
+}
+
+.library {
+    grid-row: 2 / 3;
+    height: 80%;
+    width: 75%;
+    min-width: fit-content;
+    overflow: auto;
+    background-color: #64c87d;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    grid-auto-rows: auto;
+    gap: 10px;
+    place-self: center;
+    padding: 1rem;
+    border: 15px ridge #8c8c8c;
+    border-radius: 5px;
+}
+
+.book-card {
+    position: relative;
+    border: 2px solid black;
+    border-left: 10px ridge beige;
+    border-radius: 5px;
+    background-color: #3cc8c8;
+    height: 300px;
+    display: grid;
+    grid: 2fr 1fr 1fr / 1fr;
+}
+
+    .remove-button {
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-color: rgb(255, 204, 204);
+    }
+
+    .title,
+    .pages {
+        place-self: center;
+    }
+
+    .author {
+        justify-self: center;
+    }
+
+    .title {
+        font-size: 25px;
+    }
+
+    .read-button {
+        background-color: #09ff00;
+    }
+
+    .unread {
+        background-color: rgb(255, 0, 0);
+    }
+
+.new-book-form {
+    place-self: center;
+    position: absolute;
+    border: 15px ridge #64c87d;
+    background-color: #c38aff;
+    width: 30%;
+    min-width: 320px;
+    height: 65%;
+    overflow: auto;
+}
+
+    form {
+        display: grid;
+        grid-template-rows: repeat(5, 1fr);
+        padding: 1rem;
+    }
+
+    form > div {
+        display: flex;
+        flex-direction: column;
+        min-height: 100px;
+        text-align: center;
+        font-size: max(2vw, 2vh);
+        justify-content: space-evenly;
+    }
+
+    input[type=text],
+    input[type=tel] {
+        border-radius: 5px;
+        border: none;
+        height: 30px;
+        margin-top: 10px;
+    }
+
+    input[type=checkbox] {
+        margin-top: 10px;
+    }
+
+    .form-button {
+        padding: 1.5rem 3rem;
+        background-color: #64c87d;
+        align-self: center;
+        font-size: max(2vh, 2vw);
+        border-radius: 20px;
+        color: beige;
+        text-shadow: 1px 1px black;
+    }
+
+    form div:last-of-type {
+        justify-content: end;
+    }
+
+.hidden {
+    opacity: 0;
+    z-index: -1;
+    pointer-events: none;
+}
+

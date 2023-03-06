@@ -11,18 +11,17 @@ const addBookButton = document.querySelector('.form-button');
 
 
 
-function Book(title, author, numPages, haveRead) {
-    this.title = title;
-    this.author = author;
-    this.numPages = numPages;
-    this.haveRead = haveRead;
-    this.getInfo = () => {
-        return title + ' by ' + author + ' ' + numPages + ' pages';
+class Book {
+    constructor (title, author, numPages, haveRead) {
+        this.title = title;
+        this.author = author; 
+        this.numPages = numPages;
+        this.haveRead = haveRead;
+    }
+    getInfo() {
+        console.log(this.title, this.author, this.numPages, this.haveRead);
     };
 };
-
-const guiness = new Book('World Records', 'Jim', 300, true);
-const dictionary = new Book('Dictionary', 'Bob', 1000, false);
 
 let myLibrary = [];
 
@@ -39,10 +38,6 @@ const displayBooks = () => {
         let removeButton = document.createElement('button');
         removeButton.classList.add('remove-button');
         removeButton.textContent = 'X';
-        removeButton.addEventListener('click', (e) => {
-            toggleRead(e.target);
-            e.target.textContent = e.target.textContent == 'read' ? 'unread' : 'read'
-        })
 
         let titleDiv = document.createElement('div');
         titleDiv.classList.add('title');
@@ -69,12 +64,11 @@ const displayBooks = () => {
 
         newDiv.append(removeButton, titleDiv, authorDiv, pagesDiv, readIndicator);
 
+            
         removeButton.addEventListener('click', (e) => {
             for (let book of myLibrary) {
-                if (book['title'] == e.target.nextSibling.textContent) {
-                    myLibrary.splice(myLibrary.indexOf(book), 1)
-                    displayBooks();
-                } 
+                myLibrary.splice(myLibrary.indexOf(book), 1)
+                displayBooks();
             }
         })
 
@@ -132,4 +126,5 @@ formButton.addEventListener('click', toggleForm);
 
 
 
-
+addBookToLibrary(new Book("Mike's Book", 'Mike', 1000, true))
+displayBooks()
